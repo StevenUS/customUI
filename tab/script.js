@@ -3,7 +3,7 @@ var titles = document.getElementsByClassName("tab");
 var contents = document.getElementsByClassName("content");
 
 function assignTitleWidth(){
-  var width = ((tabContainerWidth/titles.length)-titles.length).toString()
+  var width = ((tabContainerWidth/titles.length)-(titles.length + 1)).toString()
   for (var i = 0; i < titles.length; i++) {
       titles[i].addEventListener("click", addContent, false);
       //connect contents via dot notation
