@@ -1,31 +1,36 @@
-var tabContainerWidth = document.getElementById("tabContainer").offsetWidth;
-var titles = document.getElementsByClassName("tab");
-var contents = document.getElementsByClassName("content");
+// Declare variables & define as all elements to be used within functions
+var contents = document.getElementsByClassName("content"),
+		contentBoxChildren = Array.from(document.getElementById("content-box").children),
+		tabs = Array.from(document.getElementsByClassName("tab")),
+		tabContainerWidth = document.getElementById("tabContainer").offsetWidth,
+		titles = document.getElementById("title-box").children;
 
-function assignTitleWidth(){
-  var width = ((tabContainerWidth/titles.length)-(titles.length + 1)).toString()
-  for (var i = 0; i < titles.length; i++) {
-      titles[i].addEventListener("click", addContent, false);
-      //connect contents via dot notation
-      titles[i].content = contents[i];
-      titles[i].setAttribute("style", "width:"+ width +"px");
-  }
+// Declare variables & define as values dependent on previously declared variables
+var tabWidth = (tabContainerWidth / tabs.length) - tabs.length;
+
+function updateTabWidth() {
+  tabs
+  .forEach(function(tab, i) {
+  	var styleAttr = document.createAttribute("style");
+    styleAttr.value = `width: ${tabWidth}px`;
+    tab.setAttributeNode(styleAttr);
+  })
 }
-assignTitleWidth();
 
-function addContent() {
-    var length = document.getElementById("content-box").children.length;
-    for (var i = 0; i < length; i++) {
-        document.getElementById("content-box").children[i].setAttribute("data-open", "false")
-    }
-    //from line 9 above, the dot notation was set
-    this.content.setAttribute("data-open", "true");
-
-    var titles = document.getElementById("title-box").children
-    console.log(titles);
-    for (var i = 0; i < titles.length; i++) {
-            titles[i].setAttribute("style", "border-bottom: 1 px solid black");
-    }
-    this.setAttribute("style", "border-bottom: none");
-    assignTitleWidth();
+function showTabContent() {
+  updateTabWidth();
+	var content = this.content;
+  this.setAttribute("style", "border-bottom: none");
+  
+  contentBoxChildren
+    .forEach(function(child) {
+      child !== content ?
+        child.setAttribute("data-open", "false") :
+        child.setAttribute("data-open", "true");
+    })
 }
+
+tabs.forEach(function(tab, i) {
+  tab.content = contents[i];
+  tab.addEventListener("click", showTabContent)
+});
