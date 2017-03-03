@@ -1,0 +1,45 @@
+* {
+    font-family: sans-serif;
+}
+@media screen and (max-width: 500px) {
+    html {
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 500px) {
+    html {
+        font-size: 18px;
+    }
+}
+#accordion {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+    .accordion-box {
+        /*border-radius: 10px;*/
+        margin-top: 20px;
+    }
+        .accordion-title {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            background: linear-gradient(rgb(255,255,255), rgb(230,230,230));
+
+        }
+            .accordion-title h3 {
+                margin: 0px;
+            }
+        .accordion-content {
+            display: none;
+            background: rgb(230,230,230);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+            padding: 1px 7px 7px 7px;
+            margin-top: 0px;
+        }
+            .accordion-content p {
+                margin: 0px 10px 10px 10px;
+            }

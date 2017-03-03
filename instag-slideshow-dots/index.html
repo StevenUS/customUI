@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>slide show</title>
+  </head>
+  <body>
+    <div id="main">
+      <div class="innerWrap">
+        <button type="button" class="slideBtn" name="left"><</button>
+        <ul id="carousel">
+          <li class="slidePhoto" data-show="true">img1</li>
+          <li class="slidePhoto" data-show="false">img2</li>
+          <li class="slidePhoto" data-show="false">img3</li>
+          <li class="slidePhoto" data-show="false">img4</li>
+        </ul>
+        <button type="button" class="slideBtn" name="right">></button>
+        <ul id="carouselIndicator">
+          <li class="active">&#8226</li>
+          <li class="inactive">&#8226</li>
+          <li>&#8226</li>
+          <li>&#8226</li>
+        </ul>
+      </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
